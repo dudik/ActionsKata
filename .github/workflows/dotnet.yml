@@ -1,12 +1,16 @@
 name: welcome
 on: push
 jobs:
-  my-job:
+  welcome:
     runs-on: ubuntu-latest
     steps:
       - name: welcome
         run: echo "Welcome!"
         
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
       - uses: actions/checkout@v3
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v2
@@ -14,9 +18,12 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
         run: dotnet restore
-        
-      - name: build
-        run: dotnet build Actions-Kata.sln
-      
-      - name: test
-        run: dotnet test Actions-Kata.sln
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+  
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
