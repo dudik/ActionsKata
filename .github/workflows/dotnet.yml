@@ -8,6 +8,7 @@ jobs:
         run: echo "Welcome!"
         
   build:
+    needs: welcome
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +23,7 @@ jobs:
         run: dotnet build --configuration Release --no-restore
   
   test:
+    needs: build
     runs-on: ubuntu-latest
     
     steps:
