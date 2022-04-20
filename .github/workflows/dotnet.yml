@@ -8,9 +8,7 @@ jobs:
         run: echo "Welcome!"
         
       - name: build
-        run: dotnet build
-        working-directory: ActionsKataExample
+        run: dotnet build Actions-Kata.sln
       
       - name: test
-        run: dotnet test
-        working-directory: ActionsKataExample.Tests
+        run: dotnet test Actions-Kata.sln
