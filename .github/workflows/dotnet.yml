@@ -6,3 +6,9 @@ jobs:
     steps:
       - name: welcome
         run: echo "Welcome!"
+        
+      - name: build
+        run: dotnet build
+      
+      - name: test
+        run: dotnet test
