@@ -7,6 +7,9 @@ jobs:
       - name: welcome
         run: echo "Welcome!"
         
+      - name: restore
+        run: dotnet restore
+        
       - name: build
         run: dotnet build
       
