@@ -7,6 +7,14 @@ jobs:
       - name: welcome
         run: echo "Welcome!"
         
+      - uses: actions/checkout@v3
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Install dependencies
+        run: dotnet restore
+        
       - name: build
         run: dotnet build Actions-Kata.sln
       
